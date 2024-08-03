@@ -12,6 +12,8 @@
 		9217D9122C5D41470006E066 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217D9112C5D41470006E066 /* GameModeViewController.swift */; };
 		9217D9172C5D41470006E066 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9162C5D41470006E066 /* Assets.xcassets */; };
 		9217D91A2C5D41470006E066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9182C5D41470006E066 /* LaunchScreen.storyboard */; };
+		92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75622C5E70B800B3D6CE /* GameModeView.swift */; };
+		92DA75662C5E726C00B3D6CE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75652C5E726C00B3D6CE /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		9217D9162C5D41470006E066 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9217D9192C5D41470006E066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9217D91B2C5D41470006E066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92DA75622C5E70B800B3D6CE /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
+		92DA75652C5E726C00B3D6CE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +80,18 @@
 			isa = PBXGroup;
 			children = (
 				9217D9112C5D41470006E066 /* GameModeViewController.swift */,
+				92DA75622C5E70B800B3D6CE /* GameModeView.swift */,
+				92DA75642C5E726200B3D6CE /* Utils */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		92DA75642C5E726200B3D6CE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				92DA75652C5E726C00B3D6CE /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92DA75662C5E726C00B3D6CE /* Extensions.swift in Sources */,
 				9217D9122C5D41470006E066 /* GameModeViewController.swift in Sources */,
 				9217D90E2C5D41470006E066 /* AppDelegate.swift in Sources */,
 				9217D9102C5D41470006E066 /* SceneDelegate.swift in Sources */,
+				92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

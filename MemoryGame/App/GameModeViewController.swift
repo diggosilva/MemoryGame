@@ -9,9 +9,16 @@ import UIKit
 
 class GameModeViewController: UIViewController {
 
+    let gameModeView = GameModeView()
+    
+    override func loadView() {
+        super.loadView()
+        view = gameModeView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        
     }
 
 }
