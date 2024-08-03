@@ -9,16 +9,21 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
-    
+    let boardView = BoardView()
     
     override func loadView() {
         super.loadView()
-        
+        view = boardView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemOrange
+        setNavBar()
+    }
+    
+    private func setNavBar() {
+        title = "Veículos"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemRed]
     }
     
 }

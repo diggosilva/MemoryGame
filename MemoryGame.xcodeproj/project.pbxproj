@@ -15,6 +15,7 @@
 		92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75622C5E70B800B3D6CE /* GameModeView.swift */; };
 		92DA75662C5E726C00B3D6CE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75652C5E726C00B3D6CE /* Extensions.swift */; };
 		92DA756B2C5E9C2E00B3D6CE /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */; };
+		92DA756D2C5EA3B800B3D6CE /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA756C2C5EA3B800B3D6CE /* BoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		92DA75622C5E70B800B3D6CE /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
 		92DA75652C5E726C00B3D6CE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		92DA756C2C5EA3B800B3D6CE /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */,
+				92DA756C2C5EA3B800B3D6CE /* BoardView.swift */,
 			);
 			name = Board;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92DA756D2C5EA3B800B3D6CE /* BoardView.swift in Sources */,
 				92DA75662C5E726C00B3D6CE /* Extensions.swift in Sources */,
 				9217D9122C5D41470006E066 /* GameModeViewController.swift in Sources */,
 				9217D90E2C5D41470006E066 /* AppDelegate.swift in Sources */,
