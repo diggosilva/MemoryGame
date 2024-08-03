@@ -18,7 +18,12 @@ class GameModeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavBar()
+    }
+    
+    private func setNavBar() {
+        title = "Jogo da Memória"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
     }
 
 }
