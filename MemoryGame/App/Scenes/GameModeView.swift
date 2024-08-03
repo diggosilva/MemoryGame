@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol GameModeViewDelegate: AnyObject {
+    func easyButtonTapped()
+    func normalButtonTapped()
+    func hardButtonTapped()
+}
+
 class GameModeView: UIView {
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
@@ -42,6 +48,8 @@ class GameModeView: UIView {
         return stack
     }()
     
+    weak var delegate: GameModeViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
@@ -52,15 +60,15 @@ class GameModeView: UIView {
     }
     
     @objc private func easyButtonTapped() {
-        print("Escolheu FÁCIL")
+        delegate?.easyButtonTapped()
     }
     
     @objc private func normalButtonTapped() {
-        print("Escolheu NORMAL")
+        delegate?.normalButtonTapped()
     }
     
     @objc private func hardButtonTapped() {
-        print("Escolheu DIFÍCIL")
+        delegate?.hardButtonTapped()
     }
     
     func buildButton(setTitle: String, colorDefault: UIColor = .systemBlue, cornerRadius: CGFloat = 20, action: Selector) -> UIButton {
@@ -68,17 +76,17 @@ class GameModeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(setTitle, for: .normal)
         button.setTitleColor(colorDefault, for: .normal)
-        button.backgroundColor = colorDefault.withAlphaComponent(0.25)
+        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .semibold)
+        button.backgroundColor = colorDefault.withAlphaComponent(0.2)
         button.layer.borderColor = colorDefault.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = cornerRadius
-        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .semibold)
+        button.layer.shadowColor = colorDefault.cgColor
+        button.layer.shadowOffset = CGSize(width: 5, height: 5)
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 3.0
         button.clipsToBounds = true
         button.addTarget(self, action: action, for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 5, height: 5)
-        button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 3.0
         return button
     }
     

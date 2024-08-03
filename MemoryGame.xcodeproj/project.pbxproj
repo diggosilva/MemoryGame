@@ -14,6 +14,7 @@
 		9217D91A2C5D41470006E066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9182C5D41470006E066 /* LaunchScreen.storyboard */; };
 		92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75622C5E70B800B3D6CE /* GameModeView.swift */; };
 		92DA75662C5E726C00B3D6CE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75652C5E726C00B3D6CE /* Extensions.swift */; };
+		92DA756B2C5E9C2E00B3D6CE /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9217D91B2C5D41470006E066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DA75622C5E70B800B3D6CE /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
 		92DA75652C5E726C00B3D6CE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +81,7 @@
 		92DA75612C5E6DE800B3D6CE /* App */ = {
 			isa = PBXGroup;
 			children = (
-				9217D9112C5D41470006E066 /* GameModeViewController.swift */,
-				92DA75622C5E70B800B3D6CE /* GameModeView.swift */,
+				92DA75672C5E9B6C00B3D6CE /* Scenes */,
 				92DA75642C5E726200B3D6CE /* Utils */,
 			);
 			path = App;
@@ -92,6 +93,32 @@
 				92DA75652C5E726C00B3D6CE /* Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		92DA75672C5E9B6C00B3D6CE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				92DA75682C5E9B8F00B3D6CE /* GameMode */,
+				92DA75692C5E9BC800B3D6CE /* Board */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		92DA75682C5E9B8F00B3D6CE /* GameMode */ = {
+			isa = PBXGroup;
+			children = (
+				9217D9112C5D41470006E066 /* GameModeViewController.swift */,
+				92DA75622C5E70B800B3D6CE /* GameModeView.swift */,
+			);
+			name = GameMode;
+			sourceTree = "<group>";
+		};
+		92DA75692C5E9BC800B3D6CE /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */,
+			);
+			name = Board;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +196,7 @@
 				9217D90E2C5D41470006E066 /* AppDelegate.swift in Sources */,
 				9217D9102C5D41470006E066 /* SceneDelegate.swift in Sources */,
 				92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */,
+				92DA756B2C5E9C2E00B3D6CE /* BoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
