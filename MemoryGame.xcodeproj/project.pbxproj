@@ -14,6 +14,7 @@
 		9217D91A2C5D41470006E066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9182C5D41470006E066 /* LaunchScreen.storyboard */; };
 		926580D32C5FE84C00453CFD /* EasyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926580D22C5FE84C00453CFD /* EasyBoardView.swift */; };
 		926580D72C5FE8EB00453CFD /* NormalBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926580D62C5FE8EB00453CFD /* NormalBoardView.swift */; };
+		926580DA2C5FE94C00453CFD /* HardBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926580D92C5FE94C00453CFD /* HardBoardView.swift */; };
 		92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75622C5E70B800B3D6CE /* GameModeView.swift */; };
 		92DA75662C5E726C00B3D6CE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA75652C5E726C00B3D6CE /* Extensions.swift */; };
 		92DA756B2C5E9C2E00B3D6CE /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */; };
@@ -30,6 +31,7 @@
 		9217D91B2C5D41470006E066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926580D22C5FE84C00453CFD /* EasyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBoardView.swift; sourceTree = "<group>"; };
 		926580D62C5FE8EB00453CFD /* NormalBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBoardView.swift; sourceTree = "<group>"; };
+		926580D92C5FE94C00453CFD /* HardBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardBoardView.swift; sourceTree = "<group>"; };
 		92DA75622C5E70B800B3D6CE /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
 		92DA75652C5E726C00B3D6CE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,16 @@
 				92DA75612C5E6DE800B3D6CE /* App */,
 			);
 			path = MemoryGame;
+			sourceTree = "<group>";
+		};
+		926580DB2C5FE96900453CFD /* OptionGameMode */ = {
+			isa = PBXGroup;
+			children = (
+				926580D22C5FE84C00453CFD /* EasyBoardView.swift */,
+				926580D62C5FE8EB00453CFD /* NormalBoardView.swift */,
+				926580D92C5FE94C00453CFD /* HardBoardView.swift */,
+			);
+			name = OptionGameMode;
 			sourceTree = "<group>";
 		};
 		92DA75602C5E6DD900B3D6CE /* Resources */ = {
@@ -124,8 +136,7 @@
 			children = (
 				92DA756A2C5E9C2E00B3D6CE /* BoardViewController.swift */,
 				92DA756C2C5EA3B800B3D6CE /* BoardView.swift */,
-				926580D22C5FE84C00453CFD /* EasyBoardView.swift */,
-				926580D62C5FE8EB00453CFD /* NormalBoardView.swift */,
+				926580DB2C5FE96900453CFD /* OptionGameMode */,
 			);
 			name = Board;
 			sourceTree = "<group>";
@@ -206,6 +217,7 @@
 				9217D90E2C5D41470006E066 /* AppDelegate.swift in Sources */,
 				926580D72C5FE8EB00453CFD /* NormalBoardView.swift in Sources */,
 				9217D9102C5D41470006E066 /* SceneDelegate.swift in Sources */,
+				926580DA2C5FE94C00453CFD /* HardBoardView.swift in Sources */,
 				92DA75632C5E70B800B3D6CE /* GameModeView.swift in Sources */,
 				926580D32C5FE84C00453CFD /* EasyBoardView.swift in Sources */,
 				92DA756B2C5E9C2E00B3D6CE /* BoardViewController.swift in Sources */,
