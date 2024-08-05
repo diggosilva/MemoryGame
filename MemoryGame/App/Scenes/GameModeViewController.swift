@@ -30,7 +30,6 @@ class GameModeViewController: UIViewController {
     private func setDelegatesAndDataSources() {
         gameModeView.delegate = self
     }
-    
 }
 
 extension GameModeViewController: GameModeViewDelegate {

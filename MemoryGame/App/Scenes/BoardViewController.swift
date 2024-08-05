@@ -28,7 +28,6 @@ class BoardViewController: UIViewController {
     }
     
     private func setDelegatesAndDataSources() {
-//        boardView.delegate = self
         boardView.selectedModeView.delegate = self
     }
     

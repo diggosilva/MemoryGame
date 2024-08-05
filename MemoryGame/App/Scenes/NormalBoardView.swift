@@ -97,12 +97,7 @@ class NormalBoardView: UIView {
     }()
     
     lazy var vStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [hStack0, hStack1, hStack2, hStack3])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.spacing = 20
-        stack.distribution = .fillEqually
-        return stack
+        configStack(axis: .vertical, arrangedSubviews: [hStack0, hStack1, hStack2, hStack3], bgColor: .systemPurple)
     }()
     
     weak var delegate: NormalBoardViewDelegate?
