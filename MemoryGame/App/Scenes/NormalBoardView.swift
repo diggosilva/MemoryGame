@@ -7,89 +7,93 @@
 
 import UIKit
 
+protocol NormalBoardViewDelegate: AnyObject {
+    func buttonTapped()
+}
+
 class NormalBoardView: UIView {
     // MARK: Line 1
     lazy var button0: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button1: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button2: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button3: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var hStack0: UIStackView = {
-        createStack(axis: .horizontal, arrangedSubviews: [button0, button1, button2, button3])
+        configStack(axis: .horizontal, arrangedSubviews: [button0, button1, button2, button3])
     }()
     
     // MARK: Line 2
     lazy var button4: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button5: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button6: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button7: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var hStack1: UIStackView = {
-        createStack(axis: .horizontal, arrangedSubviews: [button4, button5, button6, button7])
+        configStack(axis: .horizontal, arrangedSubviews: [button4, button5, button6, button7])
     }()
     
     // MARK: Line 3
     lazy var button8: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button9: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button10: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button11: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var hStack2: UIStackView = {
-        createStack(axis: .horizontal, arrangedSubviews: [button8, button9, button10, button11])
+        configStack(axis: .horizontal, arrangedSubviews: [button8, button9, button10, button11])
     }()
     
     // MARK: Line 4
     lazy var button12: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button13: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button14: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var button15: UIButton = {
-        createButton()
+        configButton()
     }()
     
     lazy var hStack3: UIStackView = {
-        createStack(axis: .horizontal, arrangedSubviews: [button12, button13, button14, button15])
+        configStack(axis: .horizontal, arrangedSubviews: [button12, button13, button14, button15])
     }()
     
     lazy var vStack: UIStackView = {
@@ -101,6 +105,8 @@ class NormalBoardView: UIView {
         return stack
     }()
     
+    weak var delegate: NormalBoardViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
@@ -110,7 +116,7 @@ class NormalBoardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func createButton() -> UIButton {
+    private func configButton() -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemRed
@@ -119,16 +125,22 @@ class NormalBoardView: UIView {
         button.layer.shadowOffset = CGSize(width: 5, height: 5)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 3.0
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }
     
-    private func createStack(axis: NSLayoutConstraint.Axis, arrangedSubviews views: [UIView]) -> UIStackView {
+    private func configStack(axis: NSLayoutConstraint.Axis, arrangedSubviews views: [UIView], bgColor: UIColor = .yellow) -> UIStackView {
         let stack = UIStackView(arrangedSubviews: views)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = axis
         stack.spacing = 20
         stack.distribution = .fillEqually
+        stack.backgroundColor = bgColor
         return stack
+    }
+    
+    @objc func buttonTapped() {
+        delegate?.buttonTapped()
     }
     
     private func setupView() {

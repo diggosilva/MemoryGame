@@ -19,6 +19,7 @@ class BoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
+        setDelegatesAndDataSources()
     }
     
     private func setNavBar() {
@@ -26,4 +27,15 @@ class BoardViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemRed]
     }
     
+    private func setDelegatesAndDataSources() {
+//        boardView.delegate = self
+        boardView.selectedModeView.delegate = self
+    }
+    
+}
+
+extension BoardViewController: EasyBoardViewDelegate, NormalBoardViewDelegate, HardBoardViewDelegate {
+    func buttonTapped() {
+        print("DEBUG: Tocou nas cartas")
+    }
 }

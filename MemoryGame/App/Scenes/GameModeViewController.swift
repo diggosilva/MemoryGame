@@ -36,22 +36,19 @@ class GameModeViewController: UIViewController {
 extension GameModeViewController: GameModeViewDelegate {
     func easyButtonTapped() {
         let boardVC = BoardViewController()
-        boardVC.view.backgroundColor = .systemOrange
+        boardVC.boardView.difficult = .easy
         navigationController?.pushViewController(boardVC, animated: true)
-        print("Escolheu FÁCIL")
     }
     
     func normalButtonTapped() {
         let boardVC = BoardViewController()
-        boardVC.view.backgroundColor = .systemGreen
+        boardVC.boardView.difficult = .normal
         navigationController?.pushViewController(boardVC, animated: true)
-        print("Escolheu NORMAL")
     }
     
     func hardButtonTapped() {
         let boardVC = BoardViewController()
-        boardVC.view.backgroundColor = .systemRed
+        boardVC.boardView.difficult = .hard
         navigationController?.pushViewController(boardVC, animated: true)
-        print("Escolheu DIFÍCIL")
     }
 }
