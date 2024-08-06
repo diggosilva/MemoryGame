@@ -121,10 +121,13 @@ class HardBoardView: UIView {
         configStack(axis: .vertical, arrangedSubviews: [hStack0, hStack1, hStack2, hStack3, hStack4], bgColor: .systemPurple)
     }()
     
-    weak var delegate: HardBoardViewDelegate?
+    weak var delegate: BoardViewDelegate?
     
-    override init(frame: CGRect) {
+    private var action: (() -> Void)?
+    
+    init(action: (() -> Void)? = nil) {
         super.init(frame: .zero)
+        self.action = action
         setupView()
     }
     
@@ -156,7 +159,7 @@ class HardBoardView: UIView {
     }
     
     @objc func buttonTapped() {
-        delegate?.buttonTapped()
+        action?()
     }
     
     private func setupView() {

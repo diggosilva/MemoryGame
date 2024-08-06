@@ -28,13 +28,13 @@ class BoardViewController: UIViewController {
     }
     
     private func setDelegatesAndDataSources() {
-        boardView.selectedModeView.delegate = self
+        boardView.delegate = self
     }
     
 }
 
-extension BoardViewController: EasyBoardViewDelegate, NormalBoardViewDelegate, HardBoardViewDelegate {
-    func buttonTapped() {
+extension BoardViewController: BoardViewDelegate {
+    func didTapCard() {
         print("DEBUG: Tocou nas cartas")
     }
 }

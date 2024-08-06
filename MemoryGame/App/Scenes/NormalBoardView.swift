@@ -100,12 +100,16 @@ class NormalBoardView: UIView {
         configStack(axis: .vertical, arrangedSubviews: [hStack0, hStack1, hStack2, hStack3], bgColor: .systemPurple)
     }()
     
-    weak var delegate: NormalBoardViewDelegate?
+    weak var delegate: BoardViewDelegate?
     
-    override init(frame: CGRect) {
+    private var action: (() -> Void)?
+    
+    init(action: (() -> Void)? = nil) {
         super.init(frame: .zero)
+        self.action = action
         setupView()
     }
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -135,7 +139,7 @@ class NormalBoardView: UIView {
     }
     
     @objc func buttonTapped() {
-        delegate?.buttonTapped()
+        action?()
     }
     
     private func setupView() {

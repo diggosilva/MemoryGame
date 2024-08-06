@@ -79,10 +79,13 @@ class EasyBoardView: UIView {
         configStack(axis: .vertical, arrangedSubviews: [hStack0, hStack1, hStack2], bgColor: .systemPurple)
     }()
     
-    weak var delegate: EasyBoardViewDelegate?
+    weak var delegate: BoardViewDelegate?
     
-    override init(frame: CGRect) {
+    private var action: (() -> Void)?
+    
+    init(action: (() -> Void)? = nil) {
         super.init(frame: .zero)
+        self.action = action
         setupView()
     }
     
@@ -114,7 +117,7 @@ class EasyBoardView: UIView {
     }
     
     @objc func buttonTapped() {
-        delegate?.buttonTapped()
+        action?()
     }
     
     private func setupView() {

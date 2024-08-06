@@ -21,6 +21,10 @@ class GameModeViewController: UIViewController {
         setNavBar()
         setDelegatesAndDataSources()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavBar()
+    }
     
     private func setNavBar() {
         title = "Jogo da Memória"
