@@ -118,7 +118,7 @@ class HardBoardView: UIView {
     }()
     
     lazy var vStack: UIStackView = {
-        configStack(axis: .vertical, arrangedSubviews: [hStack0, hStack1, hStack2, hStack3, hStack4], bgColor: .systemPurple)
+        configStack(axis: .vertical, arrangedSubviews: [hStack0, hStack1, hStack2, hStack3, hStack4])
     }()
     
     weak var delegate: BoardViewDelegate?
@@ -148,13 +148,12 @@ class HardBoardView: UIView {
         return button
     }
     
-    private func configStack(axis: NSLayoutConstraint.Axis, arrangedSubviews views: [UIView], bgColor: UIColor = .yellow) -> UIStackView {
+    private func configStack(axis: NSLayoutConstraint.Axis, arrangedSubviews views: [UIView]) -> UIStackView {
         let stack = UIStackView(arrangedSubviews: views)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = axis
         stack.spacing = 20
         stack.distribution = .fillEqually
-        stack.backgroundColor = bgColor
         return stack
     }
     
