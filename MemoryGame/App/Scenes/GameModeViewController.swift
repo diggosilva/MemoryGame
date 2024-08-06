@@ -21,6 +21,10 @@ class GameModeViewController: UIViewController {
         setNavBar()
         setDelegatesAndDataSources()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavBar()
+    }
     
     private func setNavBar() {
         title = "Jogo da Memória"
@@ -30,28 +34,24 @@ class GameModeViewController: UIViewController {
     private func setDelegatesAndDataSources() {
         gameModeView.delegate = self
     }
-    
 }
 
 extension GameModeViewController: GameModeViewDelegate {
     func easyButtonTapped() {
         let boardVC = BoardViewController()
-        boardVC.view.backgroundColor = .systemOrange
+        boardVC.boardView.difficult = .easy
         navigationController?.pushViewController(boardVC, animated: true)
-        print("Escolheu FÁCIL")
     }
     
     func normalButtonTapped() {
         let boardVC = BoardViewController()
-        boardVC.view.backgroundColor = .systemGreen
+        boardVC.boardView.difficult = .normal
         navigationController?.pushViewController(boardVC, animated: true)
-        print("Escolheu NORMAL")
     }
     
     func hardButtonTapped() {
         let boardVC = BoardViewController()
-        boardVC.view.backgroundColor = .systemRed
+        boardVC.boardView.difficult = .hard
         navigationController?.pushViewController(boardVC, animated: true)
-        print("Escolheu DIFÍCIL")
     }
 }
