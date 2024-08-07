@@ -85,7 +85,7 @@ class EasyBoardView: UIView {
    
     private let cardBackColor = UIColor.systemRed
     
-    private var emojisShuffled = [String]() // Array de emojis embaralhados
+    private var emojisShuffled = [String]()
     
     private lazy var buttons: [UIButton] = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11]
 
@@ -93,7 +93,7 @@ class EasyBoardView: UIView {
         super.init(frame: .zero)
         self.action = action
         setupView()
-        emojis() // Inicializa os emojis
+        emojis()
     }
     
     required init?(coder: NSCoder) {
@@ -126,7 +126,6 @@ class EasyBoardView: UIView {
                     button.titleLabel?.font = .systemFont(ofSize: 40)
                 }
             } else {
-                // Oculta o emoji mostrando o verso da carta
                 button.setTitle("", for: .normal)
                 button.backgroundColor = .systemRed
             }
@@ -156,8 +155,8 @@ class EasyBoardView: UIView {
     private func configButton() -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = cardBackColor // Define a cor sólida como fundo
-        button.setTitle("", for: .normal) // Inicialmente define o título como vazio
+        button.backgroundColor = cardBackColor
+        button.setTitle("", for: .normal)
         button.layer.cornerRadius = 10
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 5, height: 5)

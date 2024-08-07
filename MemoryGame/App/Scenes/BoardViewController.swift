@@ -30,7 +30,6 @@ class BoardViewController: UIViewController {
     private func setDelegatesAndDataSources() {
         boardView.delegate = self
     }
-    
 }
 
 extension BoardViewController: BoardViewDelegate {
