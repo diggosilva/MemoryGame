@@ -168,7 +168,7 @@ class EasyBoardView: UIView {
                           self.matchs += 1
                           self.firstCard?.isEnabled = false
                           self.secondCard?.isEnabled = false
-//                          self.resetCards()
+                          self.resetCards()
                           print("DEBUG: É igual")
                       })
                   })
@@ -176,7 +176,7 @@ class EasyBoardView: UIView {
           } else {
               // Se as cartas não são iguais, faz a virada das cartas de volta
               DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-//                  self.flipBackCard()
+                  self.flipBackCard()
                   print("DEBUG: NÃO é igual")
               }
           }
@@ -186,6 +186,24 @@ class EasyBoardView: UIView {
         self.firstCard = nil
         self.secondCard = nil
         self.isProcessing = false
+    }
+    
+    private func flipBackCard() {
+        guard let first = firstCard, let second = secondCard else { return }
+        
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromLeft, .curveEaseInOut]
+        
+        UIView.transition(with: first, duration: 0.6, options: transitionOptions, animations: {
+            first.setTitle("", for: .normal)
+            first.backgroundColor = self.cardBackColor
+        }, completion: nil)
+        
+        UIView.transition(with: second, duration: 0.6, options: transitionOptions, animations: {
+            second.setTitle("", for: .normal)
+            second.backgroundColor = self.cardBackColor
+        }, completion: { _ in
+            self.resetCards()
+        })
     }
 
     private func setupView() {
