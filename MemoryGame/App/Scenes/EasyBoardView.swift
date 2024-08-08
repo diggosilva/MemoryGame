@@ -81,7 +81,7 @@ class EasyBoardView: UIView {
     
     weak var delegate: BoardViewDelegate?
    
-    private let cardBackColor = UIColor.systemRed
+    private var cardBackColor = UIColor.systemRed
     
     private lazy var buttons: [UIButton] = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11]
     
@@ -90,9 +90,9 @@ class EasyBoardView: UIView {
     private var firstCard: UIButton?
     private var secondCard: UIButton?
     private var isProcessing = false
-    private var matchs = 0
     private var card1 = 0
     private var card2 = 0
+    var score = 0
 
     init(action: (() -> Void)? = nil) {
         super.init(frame: .zero)
@@ -106,9 +106,25 @@ class EasyBoardView: UIView {
     }
     
     func emojis() {
-        emojisShuffled = (easyModeVehicles + easyModeVehicles).shuffled()
+        // Define categorias e suas cores
+        let categories: [([String], UIColor)] = [
+            (easyModeVehicles, .systemRed),
+            (easyModeAnimals, .systemGreen),
+            (easyModeFoods, .systemIndigo),
+            (easyModeSmiles, .systemYellow)
+        ]
+        
+        // Seleciona uma categoria aleatória
+        let (selectedCategory, color) = categories.randomElement() ?? (easyModeVehicles, .red)
+        
+        // Define a cor de fundo dos botões de acordo com a categoria selecionada
+        cardBackColor = color
+        
+        // Embaralha os emojis e atribui nos botões
+        emojisShuffled = (selectedCategory + selectedCategory).shuffled()
         for (index, button) in buttons.enumerated() {
             button.setTitle("", for: .normal)
+            button.backgroundColor = cardBackColor // Atualiza a cor de fundo dos botões
         }
         print("DEBUG: \(emojisShuffled)")
     }
@@ -165,10 +181,10 @@ class EasyBoardView: UIView {
                           self.secondCard?.alpha = 0.0
                       }, completion: { _ in
                           // Após o fade out, desabilita os botões e limpa o estado
-                          self.matchs += 1
                           self.firstCard?.isEnabled = false
                           self.secondCard?.isEnabled = false
                           self.resetCards()
+                          self.score += 2
                           print("DEBUG: É igual")
                       })
                   })
@@ -177,7 +193,8 @@ class EasyBoardView: UIView {
               // Se as cartas não são iguais, faz a virada das cartas de volta
               DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                   self.flipBackCard()
-                  print("DEBUG: NÃO é igual")
+                  self.score -= 1
+                  print("DEBUG: É diferente")
               }
           }
       }
