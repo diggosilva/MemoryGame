@@ -181,6 +181,12 @@ class EasyBoardView: UIView {
               }
           }
       }
+    
+    private func resetCards() {
+        self.firstCard = nil
+        self.secondCard = nil
+        self.isProcessing = false
+    }
 
     private func setupView() {
         setHierarchy()
