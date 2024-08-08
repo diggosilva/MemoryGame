@@ -80,14 +80,19 @@ class EasyBoardView: UIView {
     }()
     
     weak var delegate: BoardViewDelegate?
-    
-    private var action: (() -> Void)?
    
     private let cardBackColor = UIColor.systemRed
     
-    private var emojisShuffled = [String]()
-    
     private lazy var buttons: [UIButton] = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11]
+    
+    private var action: (() -> Void)?
+    private var emojisShuffled = [String]()
+    private var firstCard: UIButton?
+    private var secondCard: UIButton?
+    private var isProcessing = false
+    private var matchs = 0
+    private var card1 = 0
+    private var card2 = 0
 
     init(action: (() -> Void)? = nil) {
         super.init(frame: .zero)
@@ -109,29 +114,38 @@ class EasyBoardView: UIView {
     }
     
     @objc func buttonTapped(sender: UIButton) {
-        flipCard(sender)
+        guard !isProcessing, let index = buttons.firstIndex(of: sender) else { return }
+        
+        if sender.isEnabled {
+            flipCard(sender, index: index)
+        }
     }
-    
-    private func flipCard(_ button: UIButton) {
-        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .curveEaseInOut]
 
+    private func flipCard(_ button: UIButton, index: Int) {
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .curveEaseInOut]
+        
         UIView.transition(with: button, duration: 0.6, options: transitionOptions, animations: {
             if button.title(for: .normal) == "" {
                 // Revela o emoji
-                if let index = self.buttons.firstIndex(of: button) {
-                    button.setTitle(self.emojisShuffled[index], for: .normal)
-                    button.layer.borderWidth = 2
-                    button.layer.borderColor = self.cardBackColor.cgColor
-                    button.backgroundColor = .white
-                    button.titleLabel?.font = .systemFont(ofSize: 40)
+                button.setTitle(self.emojisShuffled[index], for: .normal)
+                button.layer.borderWidth = 2
+                button.layer.borderColor = self.cardBackColor.cgColor
+                button.backgroundColor = .white
+                button.titleLabel?.font = .systemFont(ofSize: 40)
+                
+                if self.firstCard == nil {
+                    self.firstCard = button
+                    self.card1 = index
+                } else {
+                    self.secondCard = button
+                    self.card2 = index
+                    self.isProcessing = true
+//                    self.compareMatch()
                 }
-            } else {
-                button.setTitle("", for: .normal)
-                button.backgroundColor = .systemRed
             }
         }, completion: nil)
     }
-    
+
     private func setupView() {
         setHierarchy()
         setConstraints()
