@@ -207,7 +207,7 @@ class NormalBoardView: UIView {
                           // Após o fade out, desabilita os botões e limpa o estado
                           self.firstCard?.isEnabled = false
                           self.secondCard?.isEnabled = false
-//                          self.resetCards()
+                          self.resetCards()
                           self.score += 2
                           print("DEBUG: É igual")
                       })
@@ -222,6 +222,12 @@ class NormalBoardView: UIView {
               }
           }
       }
+    
+    private func resetCards() {
+        self.firstCard = nil
+        self.secondCard = nil
+        self.isProcessing = false
+    }
     
     private func setupView() {
         setHierarchy()
