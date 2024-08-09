@@ -153,8 +153,37 @@ class NormalBoardView: UIView {
         print("DEBUG: \(emojisShuffled)")
     }
     
-    @objc func buttonTapped() {
-        action?()
+    @objc func buttonTapped(sender: UIButton) {
+        guard !isProcessing, let index = buttons.firstIndex(of: sender) else { return }
+        
+        if sender.isEnabled {
+            flipCard(sender, index: index)
+        }
+    }
+
+    private func flipCard(_ button: UIButton, index: Int) {
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .curveEaseInOut]
+        
+        UIView.transition(with: button, duration: 0.6, options: transitionOptions, animations: {
+            if button.title(for: .normal) == "" {
+                // Revela o emoji
+                button.setTitle(self.emojisShuffled[index], for: .normal)
+                button.layer.borderWidth = 2
+                button.layer.borderColor = self.cardBackColor.cgColor
+                button.backgroundColor = .white
+                button.titleLabel?.font = .systemFont(ofSize: 40)
+                
+                if self.firstCard == nil {
+                    self.firstCard = button
+                    self.card1 = index
+                } else {
+                    self.secondCard = button
+                    self.card2 = index
+                    self.isProcessing = true
+//                    self.compareMatch()
+                }
+            }
+        }, completion: nil)
     }
     
     private func setupView() {
