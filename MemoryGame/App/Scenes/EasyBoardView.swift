@@ -83,7 +83,9 @@ class EasyBoardView: UIView {
    
     private var cardBackColor = UIColor.systemRed
     
-    private lazy var buttons: [UIButton] = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11]
+    private lazy var buttons: [UIButton] = [button0, button1, button2, button3, 
+                                            button4, button5, button6, button7,
+                                            button8, button9, button10, button11]
     
     private var action: (() -> Void)?
     private var emojisShuffled = [String]()
