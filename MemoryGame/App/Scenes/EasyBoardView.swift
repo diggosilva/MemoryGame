@@ -117,7 +117,7 @@ class EasyBoardView: UIView {
         ]
         
         // Seleciona uma categoria aleatória
-        let (selectedCategory, color) = categories.randomElement() ?? (easyModeVehicles, .red)
+        let (selectedCategory, color) = categories.randomElement() ?? (easyModeVehicles, .systemRed)
         
         // Define a cor de fundo dos botões de acordo com a categoria selecionada
         cardBackColor = color

@@ -123,7 +123,22 @@ class HardBoardView: UIView {
     
     weak var delegate: BoardViewDelegate?
     
+    private var cardBackColor = UIColor.systemRed
+    
+    private lazy var buttons: [UIButton] = [button0, button1, button2, button3,
+                                            button4, button5, button6, button7,
+                                            button8, button9, button10, button11,
+                                            button12, button13, button14, button15,
+                                            button16, button17, button18, button19]
+    
     private var action: (() -> Void)?
+    private var emojisShuffled = [String]()
+    private var firstCard: UIButton?
+    private var secondCard: UIButton?
+    private var isProcessing = false
+    private var card1 = 0
+    private var card2 = 0
+    var score = 0
     
     init(action: (() -> Void)? = nil) {
         super.init(frame: .zero)
@@ -135,26 +150,28 @@ class HardBoardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemRed
-        button.layer.cornerRadius = 10
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 5, height: 5)
-        button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 3.0
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        return button
-    }
-    
-    private func configStack(axis: NSLayoutConstraint.Axis, arrangedSubviews views: [UIView]) -> UIStackView {
-        let stack = UIStackView(arrangedSubviews: views)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = axis
-        stack.spacing = 20
-        stack.distribution = .fillEqually
-        return stack
+    func emojis() {
+        // Define categorias e suas cores
+        let categories: [([String], UIColor)] = [
+            (hardModeVehicles, .systemRed),
+            (hardModeAnimals, .systemGreen),
+            (hardModeFoods, .systemIndigo),
+            (hardModeSmiles, .systemYellow)
+        ]
+        
+        // Seleciona uma categoria aleatória
+        let (selectedCategory, color) = categories.randomElement() ?? (hardModeVehicles, .systemRed)
+        
+        // Define a cor de fundo dos botões de acordo com a categoria selecionada
+        cardBackColor = color
+        
+        // Embaralha os emojis e atribui nos botões
+        emojisShuffled = (selectedCategory + selectedCategory).shuffled()
+        for (index, button) in buttons.enumerated() {
+            button.setTitle("", for: .normal)
+            button.backgroundColor = cardBackColor // Atualiza a cor de fundo dos botões
+        }
+        print("DEBUG: \(emojisShuffled)")
     }
     
     @objc func buttonTapped() {
@@ -179,5 +196,27 @@ class HardBoardView: UIView {
             vStack.widthAnchor.constraint(lessThanOrEqualTo: vStack.widthAnchor, multiplier: 0.6),
             vStack.heightAnchor.constraint(equalToConstant: 580),
         ])
+    }
+    
+    private func configButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemRed
+        button.layer.cornerRadius = 10
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 5, height: 5)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 3.0
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        return button
+    }
+    
+    private func configStack(axis: NSLayoutConstraint.Axis, arrangedSubviews views: [UIView]) -> UIStackView {
+        let stack = UIStackView(arrangedSubviews: views)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = axis
+        stack.spacing = 20
+        stack.distribution = .fillEqually
+        return stack
     }
 }

@@ -139,7 +139,7 @@ class NormalBoardView: UIView {
         ]
         
         // Seleciona uma categoria aleatória
-        let (selectedCategory, color) = categories.randomElement() ?? (normalModeSmiles, .red)
+        let (selectedCategory, color) = categories.randomElement() ?? (normalModeVehicles, .systemRed)
         
         // Define a cor de fundo dos botões de acordo com a categoria selecionada
         cardBackColor = color
