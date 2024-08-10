@@ -237,11 +237,30 @@ class HardBoardView: UIView {
           } else {
               // Se as cartas não são iguais, faz a virada das cartas de volta
               DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                  self.flipBackCard()
                   self.score -= 1
                   print("DEBUG: É diferente")
               }
           }
       }
+    
+    private func flipBackCard() {
+        guard let first = firstCard, let second = secondCard else { return }
+        
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromLeft, .curveEaseInOut]
+        
+        UIView.transition(with: first, duration: 0.6, options: transitionOptions, animations: {
+            first.setTitle("", for: .normal)
+            first.backgroundColor = self.cardBackColor
+        }, completion: nil)
+        
+        UIView.transition(with: second, duration: 0.6, options: transitionOptions, animations: {
+            second.setTitle("", for: .normal)
+            second.backgroundColor = self.cardBackColor
+        }, completion: { _ in
+            self.resetCards()
+        })
+    }
     
     private func resetCards() {
         self.firstCard = nil
