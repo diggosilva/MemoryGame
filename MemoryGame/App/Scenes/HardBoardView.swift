@@ -144,6 +144,7 @@ class HardBoardView: UIView {
         super.init(frame: .zero)
         self.action = action
         setupView()
+        emojis()
     }
     
     required init?(coder: NSCoder) {
