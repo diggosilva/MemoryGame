@@ -187,41 +187,41 @@ class NormalBoardView: UIView {
     }
     
     private func compareMatch() {
-          if emojisShuffled[card1] == emojisShuffled[card2] {
-              // Se as cartas são iguais, faz um zoom in e zoom out, e depois um fade out
-              UIView.animate(withDuration: 0.2, animations: {
-                  // Zoom In
-                  self.firstCard?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                  self.secondCard?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-              }, completion: { _ in
-                  UIView.animate(withDuration: 0.2, animations: {
-                      // Zoom Out
-                      self.firstCard?.transform = CGAffineTransform.identity
-                      self.secondCard?.transform = CGAffineTransform.identity
-                  }, completion: { _ in
-                      UIView.animate(withDuration: 0.2, animations: {
-                          // Fade Out
-                          self.firstCard?.alpha = 0.0
-                          self.secondCard?.alpha = 0.0
-                      }, completion: { _ in
-                          // Após o fade out, desabilita os botões e limpa o estado
-                          self.firstCard?.isEnabled = false
-                          self.secondCard?.isEnabled = false
-                          self.resetCards()
-                          self.score += 2
-                          print("DEBUG: É igual")
-                      })
-                  })
-              })
-          } else {
-              // Se as cartas não são iguais, faz a virada das cartas de volta
-              DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                  self.flipBackCard()
-                  self.score -= 1
-                  print("DEBUG: É diferente")
-              }
-          }
-      }
+        if emojisShuffled[card1] == emojisShuffled[card2] {
+            // Se as cartas são iguais, faz um zoom in e zoom out, e depois um fade out
+            UIView.animate(withDuration: 0.2, animations: {
+                // Zoom In
+                self.firstCard?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                self.secondCard?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.2, animations: {
+                    // Zoom Out
+                    self.firstCard?.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                    self.secondCard?.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.1, animations: {
+                        // Fade Out
+                        self.firstCard?.alpha = 0.0
+                        self.secondCard?.alpha = 0.0
+                    }, completion: { _ in
+                        // Após o fade out, desabilita os botões e limpa o estado
+                        self.firstCard?.isEnabled = false
+                        self.secondCard?.isEnabled = false
+                        self.resetCards()
+                        self.score += 2
+                        print("DEBUG: É igual")
+                    })
+                })
+            })
+        } else {
+            // Se as cartas não são iguais, faz a virada das cartas de volta
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.flipBackCard()
+                self.score -= 1
+                print("DEBUG: É diferente")
+            }
+        }
+    }
     
     private func flipBackCard() {
         guard let first = firstCard, let second = secondCard else { return }
